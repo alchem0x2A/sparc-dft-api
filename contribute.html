@@ -64,6 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#adding-examples">Adding examples</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-for-repo-maintainers">Notes for repo maintainers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="maintainers.html">Documentation for Maintainers</a></li>
@@ -103,7 +104,7 @@ requests</a>.
 When reporting a bug, please make sure to include the following
 information:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">SPARC</span></code> version (if available. Should look like “Month Day, Year” in the <code class="docutils literal notranslate"><span class="pre">.out</span></code> file)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPARC</span></code> version (if available). Should look like “Month Day, Year” in the <code class="docutils literal notranslate"><span class="pre">.out</span></code> file)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SPARC-X-API</span></code> version or commit hash</p></li>
 <li><p>Minimal example for reproducing the error</p></li>
 <li><p>Error trace message</p></li>
@@ -155,10 +156,13 @@ for pre-commit hooks used in this project, and change them if needed.</p>
 <p>There are several tests that will only be activated when certain
 environment variables are set (may subject to changes):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/SPARC-X/SPARC-X-API/blob/master/tests/test_read_all_examples.py"><code class="docutils literal notranslate"><span class="pre">test_read_all_examples.py</span></code></a>: test for parsing all examples from a SPARC C/C++ release. Requires:</p></li>
+<li><p><a class="reference external" href="https://github.com/SPARC-X/SPARC-X-API/blob/master/tests/test_read_all_examples.py"><code class="docutils literal notranslate"><span class="pre">test_read_all_examples.py</span></code></a>: test for parsing all examples from a SPARC C/C++ release. Requires:</p>
+<ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">SPARC_TESTS_DIR</span></code>: directory to local SPARC test files, e.g. <code class="docutils literal notranslate"><span class="pre">SPARC-master/tests</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">SPARC_DOC_PATH</span></code> (optional): directory to LaTeX documentation sources, e.g. <code class="docutils literal notranslate"><span class="pre">SPARC-master/doc/.LaTeX</span></code>, to generate compatible JSON schema</p></li>
 <li><p>Valid SPARC command (e.g. via <code class="docutils literal notranslate"><span class="pre">ASE_SPARC_COMMAND</span></code>): optional, to run <code class="docutils literal notranslate"><span class="pre">test_quick_examples</span></code> step</p></li>
+</ul>
+</li>
 <li><p><a class="reference external" href="https://github.com/SPARC-X/SPARC-X-API/blob/master/tests/test_socket.py"><code class="docutils literal notranslate"><span class="pre">test_socket.py</span></code></a>: test for socket calculations. Requires:</p>
 <ul>
 <li><p>Setting up correct SPARC command (e.g. via <code class="docutils literal notranslate"><span class="pre">ASE_SPARC_COMMAND</span></code>)</p></li>
@@ -196,6 +200,12 @@ that are important for demonstrating the functionalities of
 <code class="docutils literal notranslate"><span class="pre">SPARC-X-API</span></code> while the calculations can be finished using moderate
 computating power (e.g. a few minutes with 4 CPU cores).</p>
 <p>The examples can have the name in the format <code class="docutils literal notranslate"><span class="pre">ex[Number]-[purpose].py</span></code>.</p>
+</section>
+</section>
+<section id="notes-for-repo-maintainers">
+<h2>Notes for repo maintainers<a class="headerlink" href="#notes-for-repo-maintainers" title="Link to this heading"></a></h2>
+<p>Please check the <a class="reference internal" href="maintainers.html"><span class="std std-doc">maintenance guide</span></a> for roles
+involving admin privileges.</p>
 <!-- ### Code structure -->
 <!-- Below is a brief overview of the modules in `SPARC-X-API` with simple explanations -->
 <!-- ``` -->
@@ -240,7 +250,6 @@ computating power (e.g. a few minutes with 4 CPU cores).</p>
 <!-- on the [`badges` -->
 <!-- branch](https://github.com/SPARC-X/SPARC-X-API/tree/badges). -->
 <!-- For repo maintainers, please make sure the `badges` branch is present and **do not merge to this branch**. -->
-</section>
 </section>
 </section>
 
