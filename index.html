@@ -116,7 +116,7 @@ for installation on UNIX systems.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>sparc-x-api
 </pre></div>
 </div>
-<p>Installing the pre-compiled SPARC binary alongside SPARC-X-API (Linux only)</p>
+<p>You can also install the pre-compiled SPARC binary alongside SPARC-X-API (Linux only).</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>sparc-x
 </pre></div>
 </div>
@@ -149,9 +149,23 @@ in-/output files as a bundle:</p>
 <p>SPARC-X-API provides two ways to run a DFT calculation via SPARC C/C++ code:</p>
 <ol class="arabic simple">
 <li><p><strong>File I/O mode</strong>: generate input files, run a standard SPARC
-process and read results until calculation finishes.</p></li>
+process and read results until calculation finishes. Suitable for:</p>
+<ul class="simple">
+<li><p>Single point evaluation</p></li>
+<li><p>Band structure calculations</p></li>
+<li><p>Structural optimization (SPARC internal routines)</p></li>
+<li><p>Ab-init molecular dynamics (AIMD)</p></li>
+</ul>
+</li>
 <li><p><strong>Socket mode</strong>: run a background SPARC process while providing
-atomic positions and other data via socket communication.</p></li>
+atomic positions and other data via socket communication. Suitable for:</p>
+<ul class="simple">
+<li><p>Hundreds / thousands of single point DFT evaluations</p></li>
+<li><p>Integration with complex algorithms / workflows</p></li>
+<li><p>Combination with internal and external machine learning (ML)
+force fields</p></li>
+</ul>
+</li>
 </ol>
 <p>The calculator interface in SPARC-X-API is designed to be intuitive
 for users familiar with the ASE calculator interfaces for other DFT
@@ -167,17 +181,17 @@ packages (e.g. VASP, Quantum ESPRESSO, GPAW, Abinit, etc):</p>
 <span class="n">atoms</span><span class="o">.</span><span class="n">get_forces</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The file I/O mode is capable of running single point DFT calculations,
-geometric optimization (using SPARC’s internal routines), Ab-init
-molecular dynamics (AIMD). Optimization and AIMD tasks may also
-benefit from the built-in machine learning force field (MLFF) module.</p>
+<!-- The file I/O mode is capable of running single point DFT calculations, -->
+<!-- geometric optimization (using SPARC's internal routines), Ab-init -->
+<!-- molecular dynamics (AIMD). Optimization and AIMD tasks may also -->
+<!-- benefit from the built-in machine learning force field (MLFF) module. -->
 </section>
 <section id="socket-mode">
 <h4>Socket mode<a class="headerlink" href="#socket-mode" title="Link to this heading"></a></h4>
-<p>The socket mode is ideal for evaluating hundreds or thousands of
-single point DFT energy and forces with much less overhead and more
-flexibility compared with the file I/O mode. It usually requires just
-a few more parameters to switch from file I/O mode to socket mode:</p>
+<p>With just a few parameters, you can switch to the socket mode, ideal
+for evaluating hundreds or thousands of single point DFT energy and
+forces with much less overhead and more flexibility compared with the
+file I/O mode:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sparc.calculator</span> <span class="kn">import</span> <span class="n">SPARC</span>
 <span class="kn">from</span> <span class="nn">ase.build</span> <span class="kn">import</span> <span class="n">molecule</span>
 <span class="kn">from</span> <span class="nn">ase.optimize</span> <span class="kn">import</span> <span class="n">BFGS</span>
