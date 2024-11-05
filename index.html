@@ -144,8 +144,26 @@ in-/output files as a bundle:</p>
 </pre></div>
 </div>
 </section>
+<section id="visualizing-atomic-structures-in-sparc-files">
+<h3>Visualizing Atomic Structures in SPARC Files<a class="headerlink" href="#visualizing-atomic-structures-in-sparc-files" title="Link to this heading"></a></h3>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">ase</span> <span class="pre">gui</span></code> commandline tool to visualize SPARC files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ase<span class="w"> </span>gui<span class="w"> </span>sparc_calc_dir/*.ion
+</pre></div>
+</div>
+</section>
+<section id="parameter-validation-with-json-schema">
+<h3>Parameter Validation with JSON Schema<a class="headerlink" href="#parameter-validation-with-json-schema" title="Link to this heading"></a></h3>
+<p>SPARC-X-API allows user to validate SPARC parameters based on a JSON
+schema that is parsed from the <a class="reference external" href="https://github.com/SPARC-X/SPARC/tree/master/doc">LaTeX
+documentation</a> of
+the SPARC-X project. To get help for a specific parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sparc.api</span> <span class="kn">import</span> <span class="n">SparcAPI</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SparcAPI</span><span class="p">()</span><span class="o">.</span><span class="n">help_info</span><span class="p">(</span><span class="s2">&quot;LATVEC&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
 <section id="running-sparc-calculations">
-<h3>Running SPARC calculations<a class="headerlink" href="#running-sparc-calculations" title="Link to this heading"></a></h3>
+<h3>Running SPARC Calculations<a class="headerlink" href="#running-sparc-calculations" title="Link to this heading"></a></h3>
 <p>SPARC-X-API provides two ways to run a DFT calculation via SPARC C/C++ code:</p>
 <ol class="arabic simple">
 <li><p><strong>File I/O mode</strong>: generate input files, run a standard SPARC
@@ -200,13 +218,10 @@ file I/O mode:</p>
 <span class="n">atoms</span><span class="o">.</span><span class="n">calc</span> <span class="o">=</span> <span class="n">SPARC</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">use_socket</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 0.25 Å mesh spacing</span>
 <span class="n">opt</span> <span class="o">=</span> <span class="n">BFGS</span><span class="p">(</span><span class="n">atoms</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">atoms</span><span class="o">.</span><span class="n">calc</span><span class="p">:</span>
-	<span class="n">opt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fmax</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">opt</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fmax</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-</section>
-<section id="id2">
-<h3><a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 </section>
 </section>
 <section id="how-to-cite">
