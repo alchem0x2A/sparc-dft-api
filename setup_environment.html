@@ -42,7 +42,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
@@ -198,17 +198,14 @@ sparc.sparc_json_api.default_json_api --></p>
 </section>
 <section id="pseudopotential-files">
 <h3>Pseudopotential files<a class="headerlink" href="#pseudopotential-files" title="Link to this heading"></a></h3>
-<p>Pseudopotential files (in <code class="docutils literal notranslate"><span class="pre">Abinit</span></code> <a class="reference internal" href="#"><span class="xref myst">psp8 format</span></a> are loaded in the
+<p>Pseudopotential files (in <code class="docutils literal notranslate"><span class="pre">Abinit</span></code> <a class="reference external" href="https://docs.abinit.org/developers/psp8_info/">psp8 format</a> are loaded in the
 following order:</p>
-<ol class="arabic simple">
-<li><p>Via the <code class="docutils literal notranslate"><span class="pre">psp_dir</span></code> argument passed to the <code class="docutils literal notranslate"><span class="pre">sparc.SPARC</span></code> calculator.</p></li>
-<li><p>Through the environment variables <code class="docutils literal notranslate"><span class="pre">$SPARC_PSP_PATH</span></code> or <code class="docutils literal notranslate"><span class="pre">$SPARC_PP_PATH</span></code> (this is the
-method employed by <a class="reference internal" href="#1-via-anaconda-or-miniconda-recommended"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">conda</span></code> installation</span></a>).</p></li>
-</ol>
-<ol class="arabic simple" id="manual-psp8" start="3">
-<li><p>By using <code class="docutils literal notranslate"><span class="pre">psp8</span></code> files bundled with the SPARC-X-API installation (see the
-<a class="reference internal" href="installation.html#pip-install"><span class="std std-ref">pip installation</span></a>).</p></li>
-</ol>
+<!-- 1. Via the `psp_dir` argument passed to the `sparc.SPARC` calculator. -->
+<!-- 2. Through the environment variables `$SPARC_PSP_PATH` or `$SPARC_PP_PATH` (this is the -->
+<!--  method employed by [`conda` installation](#use-conda)). -->
+<!-- (manual-psp8)= -->
+<!-- 3. By using `psp8` files bundled with the SPARC-X-API installation (see the -->
+<!-- [pip installation](#pip-install)). -->
 <p>To specify a custom path for your pseudopotential files (in Abinit <a class="reference internal" href="#"><span class="xref myst">psp8 format</span></a>),
 use the environment variable <code class="docutils literal notranslate"><span class="pre">$SPARC_PSP_PATH</span></code> or <code class="docutils literal notranslate"><span class="pre">$SPARC_PP_PATH</span></code> variable:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SPARC_PSP_PATH</span><span class="o">=</span>path/to/your/psp8/directory
@@ -218,7 +215,7 @@ use the environment variable <code class="docutils literal notranslate"><span cl
 <p>When installing SPARC <a class="reference internal" href="installation.html#use-conda"><span class="std std-ref">via <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code></span></a>,
 <code class="docutils literal notranslate"><span class="pre">$SPARC_PSP_PATH</span></code> is already included in the activate script of the
 conda environment.</p>
-<p>To determine the location of default psp8 files (as in <a class="reference internal" href="#manual-psp8">option 3</a>), run the following code:</p>
+<p>To determine the location of default psp8 files (as in <a class="reference internal" href="installation.html#pip-install"><span class="std std-ref">manual pip installation</span></a>), run the following code:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from sparc.common import psp_dir; print(psp_dir)&quot;</span>
 </pre></div>
 </div>
@@ -230,7 +227,7 @@ following priority:</p>
 <ol class="arabic simple">
 <li><p>The command argument provided directly to the <code class="docutils literal notranslate"><span class="pre">sparc.SPARC</span></code> calculator.</p></li>
 <li><p>The environment variable <code class="docutils literal notranslate"><span class="pre">$ASE_SPARC_COMMAND</span></code></p></li>
-<li><p>If neither of the above is defined, <code class="docutils literal notranslate"><span class="pre">SPARC-X-API</span></code> looks for the SPARC binary under current <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> and combine with the suitable <code class="docutils literal notranslate"><span class="pre">mpi</span></code> command prefix.</p></li>
+<li><p>If neither of the above is defined, <code class="docutils literal notranslate"><span class="pre">SPARC-X-API</span></code> looks for the SPARC binary under current <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> and combine with the suitable MPI command prefix.</p></li>
 </ol>
 <p>Example to set <code class="docutils literal notranslate"><span class="pre">$ASE_SPARC_COMMAND</span></code></p>
 <ol class="arabic simple">
@@ -240,17 +237,18 @@ following priority:</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">srun</span></code> (e.g. in HPC slurm job system)</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">srun</span></code> (e.g. <a class="reference external" href="https://slurm.schedmd.com/documentation.html">SLURM</a> job system HPCs)</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">ASE_SPARC_COMMAND</span><span class="o">=</span><span class="s2">&quot;srun -n 8 --kill-on-bad-exit /path/to/sparc -name PREFIX&quot;</span>
 </pre></div>
 </div>
-<p><strong>TODO</strong> sphinx’s way for notes
-<em>Notes</em>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ol class="arabic simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">-name</span> <span class="pre">PREFIX</span></code> part can be omitted the <code class="docutils literal notranslate"><span class="pre">label</span></code> property of the <code class="docutils literal notranslate"><span class="pre">sparc.SPARC</span></code> calculator is set (which is the default behavior). Any extra features of the SPARC code (e.g. GPU acceleration) should be specified in the command.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">-name</span> <span class="pre">PREFIX</span></code> is optional and will automatically replaced by the <code class="docutils literal notranslate"><span class="pre">sparc.SPARC</span></code> calculator.</p></li>
 <li><p>We recommend adding kill switches for your MPI commands like the examples above when running <code class="docutils literal notranslate"><span class="pre">sparc</span></code> to avoid unexpected behaviors with exit signals.</p></li>
 </ol>
+</div>
 </section>
 </section>
 <section id="post-installation-check">
@@ -337,10 +335,18 @@ Please check additional information from:
 2. Python API documentation: https://github.com/alchem0x2A/SPARC-X-API/blob/master/README.md
 
 </pre>
-</div><p>When using SPARC-X-API to parse SPARC files, it’s essential that at
-least the “Import” and “JSON API” tests are successful. For running
-SPARC calculations, “SPARC Command” and “Calculation (File I/O)” must
-succeed.</p>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>When using SPARC-X-API to parse SPARC files, it’s essential that at
+least the “Import” and “JSON API” tests are successful.</p></li>
+<li><p>For running
+SPARC calculations, “SPARC Command” and “Calculation (File I/O)” must also
+succeed.</p></li>
+<li><p>“Calculation (UNIX socket)” ensures the SPARC binary is compatible with socket communication,
+see <a class="reference internal" href="advanced_socket.html"><span class="std std-doc">calculation in socket mode</span></a>.</p></li>
+</ol>
+</div>
 <p>If you run into further problems, consult our <a class="reference internal" href="troubleshooting.html"><span class="std std-doc">troubleshooting
 guidlines</span></a> or <a class="reference internal" href="contribute.html"><span class="std std-doc">raise an issue</span></a>.</p>
 </section>

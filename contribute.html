@@ -42,7 +42,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
@@ -142,8 +142,11 @@ for pre-commit hooks used in this project, and change them if needed.</p>
 </section>
 <section id="installing-sparc-c-c-binary">
 <h3>Installing SPARC C/C++ binary<a class="headerlink" href="#installing-sparc-c-c-binary" title="Link to this heading"></a></h3>
-<p>If you need to test running DFT using the API, compile or install the <code class="docutils literal notranslate"><span class="pre">sparc</span></code> executables following the <a class="reference external" href="https://github.com/SPARC-X/SPARC/blob/master/README.md">manual</a>.</p>
-<p><strong>TODO</strong> refer to the installation guide instead.</p>
+<p>If you need to test running DFT using the API, compile or install the
+<code class="docutils literal notranslate"><span class="pre">sparc</span></code> executables following the
+<a class="reference external" href="https://github.com/SPARC-X/SPARC/blob/master/README.md">manual</a>. Check
+<a class="reference internal" href="#install-the-sparc-binary-code"><span class="xref myst">some examples</span></a> for our recommended
+approaches.</p>
 </section>
 <section id="running-tests">
 <h3>Running tests<a class="headerlink" href="#running-tests" title="Link to this heading"></a></h3>
@@ -192,6 +195,13 @@ sphinx<span class="w"> </span>doc<span class="w"> </span>doc/_build
 <p>and then open <code class="docutils literal notranslate"><span class="pre">doc/_build/index.html</span></code> in a browser.</p>
 <p>Details about hosting the doc on Github pages please refer to the
 <a class="reference internal" href="maintainers.html"><span class="std std-doc">maintenance guide</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>Do not add contents directly in <a class="reference external" href="https://github.com/SPARC-X/SPARC-X-API/blob/master/doc/index.md"><code class="docutils literal notranslate"><span class="pre">index.md</span></code></a> except the <code class="docutils literal notranslate"><span class="pre">{toctree}</span></code> block for editing crosslinks.</p></li>
+<li><p><a class="reference external" href="https://github.com/SPARC-X/SPARC-X-API/blob/master/README.md"><code class="docutils literal notranslate"><span class="pre">README.md</span></code></a> should be kept as concise as possible.</p></li>
+</ol>
+</div>
 </section>
 <section id="adding-examples">
 <h3>Adding examples<a class="headerlink" href="#adding-examples" title="Link to this heading"></a></h3>
