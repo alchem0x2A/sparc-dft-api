@@ -102,7 +102,7 @@ conditions, and optimize it with SPARC’s internal geometric optimization
 <span class="kn">from</span> <span class="nn">ase.constraints</span> <span class="kn">import</span> <span class="n">FixAtoms</span>
 <span class="kn">from</span> <span class="nn">sparc</span> <span class="kn">import</span> <span class="n">SPARC</span>
 
-<span class="n">nh3</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">(</span><span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">pbc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nh3</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">(</span><span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">pbc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># Fix the N center</span>
 <span class="n">nh3</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">FixAtoms</span><span class="p">([</span><span class="mi">0</span><span class="p">])]</span>
 <span class="n">nh3</span><span class="o">.</span><span class="n">rattle</span><span class="p">()</span>
@@ -185,6 +185,7 @@ invoking the <code class="docutils literal notranslate"><span class="pre">use_so
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;N steps: </span><span class="si">{</span><span class="n">nsteps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Possible outputs</p>
 </section>
 
 
