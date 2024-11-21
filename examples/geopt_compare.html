@@ -102,7 +102,10 @@ conditions, and optimize it with SPARC’s internal geometric optimization
 <span class="kn">from</span> <span class="nn">ase.constraints</span> <span class="kn">import</span> <span class="n">FixAtoms</span>
 <span class="kn">from</span> <span class="nn">sparc</span> <span class="kn">import</span> <span class="n">SPARC</span>
 
-<span class="n">nh3</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">(</span><span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">pbc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nh3</span> <span class="o">=</span> <span class="n">molecule</span><span class="p">(</span><span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">pbc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># All atoms must be within the domain when using</span>
+<span class="c1"># Dirichlet BC in SPARC</span>
+<span class="n">nh3</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
 <span class="c1"># Fix the N center</span>
 <span class="n">nh3</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">FixAtoms</span><span class="p">([</span><span class="mi">0</span><span class="p">])]</span>
 <span class="n">nh3</span><span class="o">.</span><span class="n">rattle</span><span class="p">()</span>
@@ -111,7 +114,7 @@ conditions, and optimize it with SPARC’s internal geometric optimization
 <span class="k">def</span> <span class="nf">optimize_sparc_internal</span><span class="p">():</span>
     <span class="n">atoms</span> <span class="o">=</span> <span class="n">nh3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">calc</span> <span class="o">=</span> <span class="n">SPARC</span><span class="p">(</span>
-        <span class="n">h</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+        <span class="n">h</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>
         <span class="n">kpts</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="n">xc</span><span class="o">=</span><span class="s2">&quot;pbe&quot;</span><span class="p">,</span>
         <span class="n">convergence</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;forces&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">},</span>
@@ -136,7 +139,7 @@ The following code uses the file I/O mode:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">optimize_ase_bfgs</span><span class="p">():</span>
     <span class="n">atoms</span> <span class="o">=</span> <span class="n">nh3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">calc</span> <span class="o">=</span> <span class="n">SPARC</span><span class="p">(</span>
-        <span class="n">h</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+        <span class="n">h</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>
         <span class="n">kpts</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
         <span class="n">xc</span><span class="o">=</span><span class="s2">&quot;pbe&quot;</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;ex1-ase&quot;</span>
@@ -169,7 +172,7 @@ invoking the <code class="docutils literal notranslate"><span class="pre">use_so
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">optimize_ase_bfgs_socket</span><span class="p">():</span>
     <span class="n">atoms</span> <span class="o">=</span> <span class="n">nh3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">calc</span> <span class="o">=</span> <span class="n">SPARC</span><span class="p">(</span>
-        <span class="n">h</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">kpts</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xc</span><span class="o">=</span><span class="s2">&quot;pbe&quot;</span><span class="p">,</span> <span class="n">print_forces</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;ex1-ase-socket&quot;</span><span class="p">,</span>
+        <span class="n">h</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span> <span class="n">kpts</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xc</span><span class="o">=</span><span class="s2">&quot;pbe&quot;</span><span class="p">,</span> <span class="n">print_forces</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;ex1-ase-socket&quot;</span><span class="p">,</span>
         <span class="n">use_socket</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">atoms</span><span class="o">.</span><span class="n">calc</span> <span class="o">=</span> <span class="n">calc</span>
@@ -185,7 +188,18 @@ invoking the <code class="docutils literal notranslate"><span class="pre">use_so
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;N steps: </span><span class="si">{</span><span class="n">nsteps</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Possible outputs</p>
+<p>Example outputs from the different ways of running the optimization
+are as follows:</p>
+<p>SPARC internal LBFGS routine</p>
+<p>ASE LBFGS + file I/O mode</p>
+<p>ASE LBFGS + socket I/O mode</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The result may be slightly different when further reducing <code class="docutils literal notranslate"><span class="pre">h</span></code> and increase the box size. When running socket mode calculation with a large <code class="docutils literal notranslate"><span class="pre">h</span></code> the error accumulation may lead to divergence.</p>
+</div>
+<p>Although the numbers of relaxation steps are similar between file I/O
+and socket mode, the total self-consistent force (SCF) steps are
+reduced from 230 in the file I/O mode to 94 in socket mode.</p>
 </section>
 
 
