@@ -280,7 +280,7 @@
                     <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">env_psp_dir</span><span class="p">)</span>
             <span class="c1"># Use pp_path field in cfg</span>
             <span class="n">parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">parser</span><span class="p">[</span><span class="s2">&quot;sparc&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;sparc&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">parser</span> <span class="k">else</span> <span class="p">{}</span>
-            <span class="n">psp_dir_ini</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pp_path&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">psp_dir_ini</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;psp_path&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">psp_dir_ini</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">sanitize_path</span><span class="p">(</span><span class="n">psp_dir_ini</span><span class="p">)</span>
             <span class="c1"># At this point, we try to use the psp files bundled with sparc</span>
